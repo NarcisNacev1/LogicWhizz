@@ -1,0 +1,27 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+.venv/
+
+# Flask environment and config
+.env
+*.env
+
+# Logs and temporary files
+*.log
+*.sqlite3
+instance/
+uploads/
+
+# Static and swagger files
+src/static/swagger.json
+
+# IDE-specific files
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
