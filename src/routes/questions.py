@@ -46,7 +46,7 @@ def clean_up(assistant_id, thread_id, vector_store_id, file_ids):
     client.beta.vector_stores.delete(vector_store_id)
     [client.files.delete(file_id) for file_id in file_ids]
 
-FILES_DIR = "C:/Users/narci/PycharmProjects/LogicWizz/data/Intro_to_DS/"
+FILES_DIR = "./data/Materials/"
 file_ids = []
 
 # Upload files and create a vector store
@@ -65,7 +65,7 @@ print(f"Created vector store: {vector_store.id} - {vector_store.name}")
 # Create an assistant
 instructions = (
     "You are a teaching assistant for Computer Science at the University of American College Skopje."
-    " Answer student questions only about the following course: 'Introduction to Data Science.'"
+    "Focus on questions that are related to computer science and data science."
     " If you do not know the answer to a question, state that you do not know, rather than guessing."
     " Do not provide full answers to problem sets, as this would violate academic honesty."
     " You can refer to the uploaded course materials for any course-related queries."
@@ -76,7 +76,7 @@ assistant = client.beta.assistants.create(
     name="UACS GPT",
     tools=[{"type": "file_search"}],
     tool_resources={"file_search": {"vector_store_ids": [vector_store.id]}} ,
-    model="gpt-3.5-turbo",  # Correct model name
+    model="gpt-4o-mini",  # Correct model name
 )
 print(f"Created assistant: {assistant.id} - {assistant.name}")
 
