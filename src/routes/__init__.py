@@ -1,4 +1,4 @@
-from flask import Blueprint
+from .questions import questions_bp
 
 def register_routes(app):
-    app.register_blueprint(questions_bp, url_prefix='/questions')
+    app.register_blueprint(questions_bp, name='questions1', url_prefix='/questions')

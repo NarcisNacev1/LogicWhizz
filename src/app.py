@@ -1,15 +1,11 @@
-from flask import Flask
-from extensions import db
-from config.config import Config
-#from routes import register_routes
+import sys
+import os
 
-app = Flask(__name__)
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-app.config.from_object(Config)
+from src import create_app
 
-db.init_app(app)
-
-# register_routes(app)
+app = create_app()
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,4 +1,4 @@
-from extensions import db
+from .extensions import db
 
 class Question(db.Model):
     id = db.Column(db.Integer, primary_key=True)
