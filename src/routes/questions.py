@@ -56,7 +56,7 @@ for file in sorted(os.listdir(FILES_DIR)):
     print(f"Uploaded file: {_file.id} - {file}")
 
 vector_store = client.beta.vector_stores.create(
-    name="Introduction to Data Science Lecture Presentations.",
+    name="UACS Materials.",
     file_ids=file_ids
 )
 print(f"Created vector store: {vector_store.id} - {vector_store.name}")
