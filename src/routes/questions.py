@@ -5,7 +5,6 @@ from dotenv import load_dotenv
 from openai import OpenAI
 from openai import AssistantEventHandler
 from typing_extensions import override
-
 # Load environment variables
 load_dotenv()
 
