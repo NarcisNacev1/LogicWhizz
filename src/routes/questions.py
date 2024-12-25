@@ -5,6 +5,8 @@ from dotenv import load_dotenv
 from openai import OpenAI
 from openai import AssistantEventHandler
 from typing_extensions import override
+from ..models import Question
+from ..extensions import db
 # Load environment variables
 load_dotenv()
 
@@ -82,7 +84,6 @@ print(f"Created assistant: {assistant.id} - {assistant.name}")
 questions_bp = Blueprint("questions", __name__)
 
 
-# POST request handler for questions
 @questions_bp.route("/ask", methods=["POST"])
 @swag_from({
     'summary': 'Ask a question to the assistant',
@@ -148,11 +149,20 @@ def ask_question():
     except Exception as e:
         return jsonify({"error": f"Error during streaming: {e}"}), 500
 
+    # Save the question and answer to the database
+    try:
+        new_question = Question(question=question, answer=assistant_response)
+        db.session.add(new_question)
+        db.session.commit()
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": f"Failed to save to database: {e}"}), 500
+
     # Example response structure with the model's answer stored in the variable
     response = {"question": question, "answer": assistant_response}
 
     # Clean up after interaction
-    clean_up(assistant.id, thread.id, vector_store.id, file_ids)
+    #clean_up(assistant.id, thread.id, vector_store.id, file_ids)
 
     return jsonify(response)
 

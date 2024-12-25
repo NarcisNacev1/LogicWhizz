@@ -1,0 +1,67 @@
+{
+	"info": {
+		"_postman_id": "72c86f44-6cce-4e47-a4f7-d30d4c988a5f",
+		"name": "LogicWizz",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34687485",
+		"_collection_link": "https://scripted-9947.postman.co/workspace/Team-Workspace~6403514f-9204-494e-8c37-660298eb4dfb/collection/34687485-72c86f44-6cce-4e47-a4f7-d30d4c988a5f?action=share&source=collection_link&creator=34687485"
+	},
+	"item": [
+		{
+			"name": "GetAnswer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"question\": \"What is Linear Reggression\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{backendAPIUrl}}/questions/ask",
+					"host": [
+						"{{backendAPIUrl}}"
+					],
+					"path": [
+						"questions",
+						"ask"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "backendAPIUrl",
+			"value": "http://localhost:5000/",
+			"type": "string"
+		}
+	]
+}
