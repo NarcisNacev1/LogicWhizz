@@ -1,0 +1,1 @@
+Drop files like pdf's or resources that you want your ai to learn from in this materials folder
